@@ -1,0 +1,42 @@
+<template name="Chat">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Video Chat</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="video-container">
+                <!-- note the 'autoplay' -->
+                <div class="col-md-6">
+                    <p>Their video:</p>
+                    <video id="theirVideo" class="theirVideo img-thumbnail" autoplay></video>
+                </div>
+                <div class="col-md-6">
+                    <p>Your video</p>
+                    <video id="myVideo" muted="true" class="myVideo img-thumbnail" autoplay></video>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Controls</h2>
+    <form>
+        <p>Your id: <span id="myPeerId">...</span></p>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="text" placeholder="Call user id..." id="remotePeerId" class="form-control" >
+        </div>
+        <button type="submit" class="btn btn-default">Call</button>
+        <a id="endCall"  data-action="end-call"  class="btn btn-default">End</a>
+    </form>
+    or
+    <ul class="list-group">
+      {{#each users}}
+        <li class="list-group-item">
+          {{#each emails}}{{address}}{{/each}}
+           <a href="#" data-action="make-call" data-id={{_id}}  class="glyphicon glyphicon-play-circle"></a>
+           <a href="#" data-action="end-call"   class="glyphicon glyphicon-remove" ></a>
+        </li>
+      {{/each}}
+    </ul>
+</template>
